@@ -1,0 +1,29 @@
+# dbus-wattcycle-ble Configuration File
+# This file configures the Wattcycle BLE battery service for Venus OS
+
+battery:
+  # MAC address of your Wattcycle battery (required)
+  # Find this by scanning: wattcycle-ble scan
+  mac_address: "C0:D6:3C:57:EF:2F"
+
+  # Display name for this battery in the Venus GUI (optional)
+  name: "Wattcycle 314Ah Mini LiFePO4"
+
+  # Device instance ID (optional, default: 1)
+  # Use different values if you have multiple batteries
+  device_instance: 1
+
+  # Polling interval in milliseconds (optional, default: 5000)
+  # How often to read data from the battery
+  poll_interval: 5000
+
+  # Reconnection delay in seconds (optional, default: 10)
+  # How long to wait before reconnecting after a connection loss
+  reconnect_delay: 10
+
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL (optional, default: INFO)
+  level: "INFO"
+
+  # Optional log file path (comment out to disable file logging)
+  # file: "/var/log/dbus-wattcycle-ble.log"

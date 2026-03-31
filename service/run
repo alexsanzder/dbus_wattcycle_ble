@@ -1,0 +1,35 @@
+#!/bin/sh
+# dbus-wattcycle-ble service run script for daemontools
+exec 2>&1
+
+# Log startup
+echo "Starting dbus-wattcycle-ble service"
+
+# Check if Bluetooth interface is available
+if [ -d /sys/class/bluetooth ]; then
+    echo "Bluetooth interface detected"
+    # Ensure Bluetooth is enabled (some Venus OS versions require this)
+    if command -v bluetoothctl >/dev/null 2>&1; then
+        bluetoothctl power on >/dev/null 2>&1 || true
+    fi
+else
+    echo "WARNING: No Bluetooth interface detected"
+fi
+
+# Change to service directory
+cd /data/dbus-wattcycle-ble || exit 1
+
+# Check if config file exists
+if [ ! -f config.yml ]; then
+    echo "ERROR: config.yml not found"
+    exit 1
+fi
+
+# Check if Python is available
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "ERROR: python3 not found"
+    exit 1
+fi
+
+# Start the Python service
+exec python3 -u -m dbus_wattcycle_ble.battery_service -c config.yml
