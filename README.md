@@ -1,4 +1,12 @@
 # dbus-wattcycle-ble
+> [!CAUTION]
+> ## ⚠️ DEPRECATED
+> **This project is no longer maintained.**
+> Wattcycle BLE support has been integrated into the [**dbus-serialbattery**](https://github.com/mr-manuel/venus-os_dbus-serialbattery) project.
+>
+> Please use **dbus-serialbattery** for the latest features, bug fixes, and better compatibility with Venus OS.
+
+---
 
 Wattcycle BLE battery driver for Victron Venus OS.
 
